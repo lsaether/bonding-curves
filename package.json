@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "generate": "truffle compile && typechain --target truffle ./build/**/*.json",
+    "generate": "truffle compile && typechain --target truffle './build/**/*.json'",
     "test": "truffle test && yarn tsc",
     "tsc": "tsc --noEmit"
   },
