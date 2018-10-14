@@ -1,0 +1,37 @@
+{
+  "name": "bonding-curve",
+  "version": "0.0.1",
+  "description": "Smart Contracts for bonding curves.",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "generate": "truffle compile && typechain --target truffle ./build/**/*.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lsaether/bonding-curve.git"
+  },
+  "keywords": [
+    "ethereum",
+    "tcr",
+    "tokens"
+  ],
+  "author": "lsaether",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/lsaether/bonding-curve/issues"
+  },
+  "homepage": "https://github.com/lsaether/bonding-curve#readme",
+  "dependencies": {
+    "openzeppelin-solidity": "2.0.0-rc.3",
+    "ts-node": "7.0.1",
+    "typechain": "0.3.6"
+  },
+  "devDependencies": {
+    "truffle-typings": "1.0.3",
+    "typescript": "3.1.3"
+  }
+}
