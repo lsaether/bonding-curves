@@ -8,7 +8,8 @@
   },
   "scripts": {
     "generate": "truffle compile && typechain --target truffle ./build/**/*.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "truffle test && yarn tsc",
+    "tsc": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -27,11 +28,15 @@
   "homepage": "https://github.com/lsaether/bonding-curves#readme",
   "dependencies": {
     "openzeppelin-solidity": "2.0.0-rc.3",
-    "ts-node": "7.0.1",
-    "typechain": "0.3.6"
+    "truffle": "5.0.0-next.12"
   },
   "devDependencies": {
+    "@types/bignumber.js": "^5.0.0",
+    "@types/chai": "4.1.6",
+    "chai": "4.2.0",
     "truffle-typings": "1.0.3",
+    "ts-node": "7.0.1",
+    "typechain": "0.3.6",
     "typescript": "3.1.3"
   }
 }
