@@ -8,7 +8,7 @@ contract SquareRoot is ICurve {
     using SafeMath for uint256;
 
     // Set decimals equal to ether for testing purposes.
-    uint256 constant decimals = 10**18;
+    uint256 constant public decimals = 10**18;
 
     function calculatePurchaseReturn(
         uint256 _totalSupply,

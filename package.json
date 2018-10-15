@@ -33,6 +33,7 @@
   "devDependencies": {
     "@types/bignumber.js": "^5.0.0",
     "@types/chai": "4.1.6",
+    "bignumber.js": "^7.2.1",
     "chai": "4.2.0",
     "truffle-typings": "1.0.3",
     "ts-node": "7.0.1",

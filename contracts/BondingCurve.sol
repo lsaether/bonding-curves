@@ -7,35 +7,35 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 import "./Interface/ICurve.sol";
-import "./Curves/SquareRoot.sol";
+import "./BancorFormula.sol";
 
 contract BondingCurve is ERC20, Ownable {
     using SafeMath for uint256;
     
-    ICurve public curve;
+    BancorFormula public curve;
 
     uint256 public poolBalance;
     uint256 public maxGasPrice = 1 * 10**18 wei;
 
-    uint256 public reserveRatio;
+    uint256 public reserveRatio = 50;
 
     event CurvedMint(address sender, uint256 amount, uint256 deposit);
     event CurvedBurn(address sender, uint256 amount, uint256 reimbursement);
 
     constructor() public {
-        curve = new SquareRoot();
+        curve = new BancorFormula();
     }
 
     function calculateCurvedMintReturn(uint256 _amount)
         public view returns (uint256 mintAmount)
     {
-        return curve.calculatePurchaseReturn(totalSupply(), poolBalance, reserveRatio, _amount);
+        return curve.calculatePurchaseReturn(totalSupply(), poolBalance, uint32(reserveRatio), _amount);
     }
 
     function calculateCurvedBurnReturn(uint256 _amount)
         public view returns (uint256 burnAmount)
     {
-        return curve.calculateSaleReturn(totalSupply(), poolBalance, reserveRatio, _amount);
+        return curve.calculateSaleReturn(totalSupply(), poolBalance, uint32(reserveRatio), _amount);
     }
 
     modifier validGasPrice() {
