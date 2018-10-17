@@ -6,40 +6,34 @@ import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 
-import "./Interface/ICurve.sol";
+import "./Interface/IBondingCurve.sol";
 import "./BancorFormula.sol";
 
-contract BondingCurve is ERC20, Ownable {
+contract CurveBondedToken is IBondingCurve, BancorFormula, Ownable, ERC20 {
     using SafeMath for uint256;
-    
-    BancorFormula public curve;
 
-    uint256 public poolBalance;
     uint256 public maxGasPrice = 1 * 10**18 wei;
 
+    uint256 public poolBalance;
     uint256 public reserveRatio = 50;
-
-    event CurvedMint(address sender, uint256 amount, uint256 deposit);
-    event CurvedBurn(address sender, uint256 amount, uint256 reimbursement);
-
-    constructor() public {
-        curve = new BancorFormula();
-    }
 
     function calculateCurvedMintReturn(uint256 _amount)
         public view returns (uint256 mintAmount)
     {
-        return curve.calculatePurchaseReturn(totalSupply(), poolBalance, uint32(reserveRatio), _amount);
+        return calculatePurchaseReturn(totalSupply(), poolBalance, uint32(reserveRatio), _amount);
     }
 
     function calculateCurvedBurnReturn(uint256 _amount)
         public view returns (uint256 burnAmount)
     {
-        return curve.calculateSaleReturn(totalSupply(), poolBalance, uint32(reserveRatio), _amount);
+        return calculateSaleReturn(totalSupply(), poolBalance, uint32(reserveRatio), _amount);
     }
 
     modifier validGasPrice() {
-        require(tx.gasprice <= maxGasPrice, "Must send equal to or lower than maximum gas price to mitigate front running attacks.");
+        require(
+            tx.gasprice <= maxGasPrice, 
+            "Must send equal to or lower than maximum gas price to mitigate front running attacks."
+        );
         _;
     }
 

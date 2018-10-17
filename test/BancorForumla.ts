@@ -38,6 +38,6 @@ contract("BancorFormula", (accounts) => {
     expect(sale).to.exist;
 
     // returns 0.999999999999999999 (which is close enough to 1.0)
-    console.log(web3.utils.fromWei(sale.toString()));
+    expect(web3.utils.fromWei(sale.toString())).to.equal('0.999999999999999999');
   })
 })
