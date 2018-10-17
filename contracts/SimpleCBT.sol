@@ -10,6 +10,10 @@ import "./CurveBondedToken.sol";
 contract SimpleCBT is CurveBondedToken {
     function () public payable { mint(); }
 
+    constructor(uint256 _reserveRatio) public
+        CurveBondedToken(_reserveRatio)
+    {}
+
     function mint() public payable {
         require(msg.value > 0, "Must send ether to buy tokens.");
         _curvedMint(msg.value);

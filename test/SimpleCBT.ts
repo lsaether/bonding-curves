@@ -11,7 +11,7 @@ contract('SimpleCBT', ([owner, user1, user2]) => {
   let simpleCBT: SimpleCBTInstance;
 
   before(async () => {
-    simpleCBT = await SimpleCBT.new();
+    simpleCBT = await SimpleCBT.new(500000);
     expect(simpleCBT.address).to.exist;
 
     const ownerOf = await simpleCBT.owner();
@@ -25,6 +25,22 @@ contract('SimpleCBT', ([owner, user1, user2]) => {
       value: web3.utils.toWei('0.05', 'ether')
     });
 
-    expect(buyTokens.receipt).to.exist;
+    expect(buyTokens.status).to.be.true;
+
+    console.log(buyTokens.logs[0]);
+    console.log(buyTokens.logs[1]);
+
+
+    // console.log(buyTokens);
+
+    // expect(buyTokens.receipt).to.exist;
+  })
+
+  it('allows purchase by sending ether to the `mint` function', async () => {
+
+  })
+
+  it('allows to burn tokens', async () => {
+    
   })
 })
