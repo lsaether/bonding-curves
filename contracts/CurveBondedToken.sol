@@ -15,7 +15,7 @@ contract CurveBondedToken is IBondingCurve, BancorFormula, Ownable, ERC20 {
     uint256 public maxGasPrice = 1 * 10**18 wei;
 
     uint256 public poolBalance;
-    uint256 public reserveRatio = 50;
+    uint256 public reserveRatio = 500000;
 
     function calculateCurvedMintReturn(uint256 _amount)
         public view returns (uint256 mintAmount)

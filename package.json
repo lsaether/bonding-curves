@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "generate": "truffle compile && typechain --target truffle './build/**/*.json'",
+    "generate": "truffle compile && typechain --target truffle './build/**/*.json' && node scripts/patchTypechain.js",
     "test": "truffle test && yarn tsc",
     "tsc": "tsc --noEmit"
   },
@@ -31,9 +31,9 @@
     "truffle": "5.0.0-next.12"
   },
   "devDependencies": {
-    "@types/bignumber.js": "^5.0.0",
+    "@types/bignumber.js": "5.0.0",
     "@types/chai": "4.1.6",
-    "bignumber.js": "^7.2.1",
+    "bignumber.js": "7.2.1",
     "chai": "4.2.0",
     "truffle-typings": "1.0.3",
     "ts-node": "7.0.1",

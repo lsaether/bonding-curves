@@ -7,12 +7,12 @@ declare const web3: any;
 
 const BancorFormula = artifacts.require("BancorFormula");
 
-contract("BancorFormula", (accounts) => {
+contract("BancorFormula", () => {
   let bancorFormula: BancorFormulaInstance;
 
   before(async () => {
     bancorFormula = await BancorFormula.new();
-    expect(bancorFormula).to.exist
+    expect(bancorFormula.address).to.exist
   })
 
   it('calculates the same purchase and sale rate given the same inputs', async () => {
