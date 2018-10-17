@@ -41,6 +41,6 @@ contract('SimpleCBT', ([owner, user1, user2]) => {
   })
 
   it('allows to burn tokens', async () => {
-    
+
   })
 })
