@@ -15,6 +15,13 @@ const main = async () => {
     const endIndex = startIndex + targetString.length;
     typeFile = typeFile.slice(0, endIndex).concat('  address: string;\n').concat(typeFile.slice(endIndex));
   })
+  // Now replace BigNumber with BN since we use web3 1.0.0
+  //
+  typeFile = typeFile.split('import { BigNumber } from "bignumber.js";').join(
+    'import BN = require("bn.js");'
+  );
+  typeFile = typeFile.split('BigNumber').join('BN');
+  //
   fs.writeFileSync('types/truffle-contracts/index.d.ts', typeFile);
 }
 

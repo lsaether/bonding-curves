@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { BancorFormulaInstance } from '../types/truffle-contracts';
 
-import BigNumber from 'bignumber.js';
+import BN = require('bn.js');
 
 declare const web3: any;
 
@@ -26,7 +26,7 @@ contract("BancorFormula", () => {
 
     expect(purchase).to.exist;
 
-    const amt = new BigNumber(web3.utils.toWei('2', 'ether')).plus(purchase);
+    const amt = new BN(web3.utils.toWei('2', 'ether')).add(purchase);
 
     const sale = await bancorFormula.calculateSaleReturn(
       amt,
