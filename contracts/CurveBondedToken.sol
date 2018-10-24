@@ -8,11 +8,10 @@ import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 import "./Interface/IBondingCurve.sol";
 import "./BancorFormula.sol";
+import "./MaxGasPrice.sol";
 
-contract CurveBondedToken is IBondingCurve, BancorFormula, Ownable, ERC20 {
+contract CurveBondedToken is IBondingCurve, BancorFormula, Ownable, MaxGasPrice, ERC20 {
     using SafeMath for uint256;
-
-    uint256 public maxGasPrice = 1 * 10**18 wei;
 
     uint256 public scale = 10**18;
     uint256 public poolBalance = 10*scale;
@@ -35,14 +34,6 @@ contract CurveBondedToken is IBondingCurve, BancorFormula, Ownable, ERC20 {
         public view returns (uint256 burnAmount)
     {
         return calculateSaleReturn(totalSupply(), poolBalance, uint32(reserveRatio), _amount);
-    }
-
-    modifier validGasPrice() {
-        require(
-            tx.gasprice <= maxGasPrice, 
-            "Must send equal to or lower than maximum gas price to mitigate front running attacks."
-        );
-        _;
     }
 
     modifier validMint(uint256 _amount) {

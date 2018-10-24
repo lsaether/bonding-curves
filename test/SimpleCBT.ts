@@ -1,7 +1,10 @@
 import { expect } from 'chai';
 import { SimpleCBTInstance } from '../types/truffle-contracts';
 
-declare const web3: any;
+import BN = require('bn.js');
+import Web3 = require('web3');
+
+declare const web3: Web3;
 
 const SimpleCBT = artifacts.require('SimpleCBT');
 
@@ -30,19 +33,19 @@ contract('SimpleCBT', ([owner, user1, user2]) => {
 
     const totalSupply = await simpleCBT.totalSupply();
     expect(
-      totalSupply.gt(web3.utils.toWei('1', 'ether'))
+      totalSupply.gt(new BN(web3.utils.toWei('1', 'ether')))
     ).to.be.true;
     const user1Bal = await simpleCBT.balanceOf(user1);
     expect(
-      user1Bal.eq(totalSupply.sub(web3.utils.toWei('1', 'ether')))
+      user1Bal.eq(totalSupply.sub(new BN(web3.utils.toWei('1', 'ether'))))
     ).to.be.true;
 
-    console.log(buyTokens.logs[0]);
-    console.log(buyTokens.logs[1]);
+    // console.log(buyTokens.logs![0]);
+    // console.log(buyTokens.logs![1]);
 
-    console.log(buyTokens);
+    // console.log(buyTokens);
 
-    console.log(await simpleCBT.balanceOf(user1));
+    // console.log(await simpleCBT.balanceOf(user1));
   })
 
   it('allows purchase by sending ether to the `mint` function', async () => {
