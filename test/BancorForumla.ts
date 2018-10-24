@@ -7,6 +7,8 @@ declare const web3: any;
 
 const BancorFormula = artifacts.require("BancorFormula");
 
+const BENCHMARK = true;
+
 contract("BancorFormula", () => {
   let bancorFormula: BancorFormulaInstance;
 
@@ -40,4 +42,25 @@ contract("BancorFormula", () => {
     // returns 0.999999999999999999 (which is close enough to 1.0)
     expect(web3.utils.fromWei(sale.toString())).to.equal('0.999999999999999999');
   })
+
+  if (BENCHMARK) {
+    it('gets data', async () => {
+      const range = [...Array(11).keys()].map((val: any) => {
+        return web3.utils.toWei(String(val), 'ether');
+      });
+
+      range.shift();
+
+      range.forEach(async (val: any) => {
+        const res = await bancorFormula.calculatePurchaseReturn(
+          val,
+          range.indexOf(val) > 0 ? val[range.indexOf(val) - 1] : 0,
+          500000,
+          val,
+        );
+
+        console.log(res);
+      })
+    })
+  }
 })
