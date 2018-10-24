@@ -7,6 +7,7 @@
     "test": "test"
   },
   "scripts": {
+    "dep": "node scripts/enforceStaticDeps.js",
     "ganache": "ganache-cli -p 8577",
     "generate": "truffle compile && typechain --target truffle './build/**/*.json' && node scripts/patchTypechain.js",
     "test": "truffle test && yarn tsc",
@@ -34,6 +35,7 @@
   "devDependencies": {
     "@types/bn.js": "4.11.2",
     "@types/chai": "4.1.6",
+    "@types/web3": "1.0.11",
     "bn.js": "4.11.8",
     "chai": "4.2.0",
     "truffle-typings": "1.0.3",
