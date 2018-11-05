@@ -48,7 +48,7 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@types/web3@^1.0.11":
+"@types/web3@1.0.11":
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/@types/web3/-/web3-1.0.11.tgz#afe6f382aa5078c06be3f8018ab64d2517efb9ad"
   integrity sha512-45puQrp3ubVTOa6ezkdgQqaj4nwmvOn1vI1GLfA7Q6cZdIRDpFhmg/Mue9rUTaQuhfeXMCUSZ71zbozHpQJ17w==
@@ -289,6 +289,13 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
   integrity sha1-FQStJSMVjKpA20onh8sBQRmU6k8=
+
+ganache-cli@^6.1.8:
+  version "6.1.8"
+  resolved "https://registry.yarnpkg.com/ganache-cli/-/ganache-cli-6.1.8.tgz#49a8a331683a9652183f82ef1378d17e1814fcd3"
+  integrity sha512-yXzteu4SIgUL31mnpm9j+x6dpHUw0p/nsRVkcySKq0w+1vDxH9jMErP1QhZAJuTVE6ni4nfvGSNkaQx5cD3jfg==
+  dependencies:
+    source-map-support "^0.5.3"
 
 get-caller-file@^1.0.1:
   version "1.0.3"
@@ -666,7 +673,7 @@ solc@0.4.24:
     semver "^5.3.0"
     yargs "^4.7.1"
 
-source-map-support@^0.5.6:
+source-map-support@^0.5.3, source-map-support@^0.5.6:
   version "0.5.9"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.9.tgz#41bc953b2534267ea2d605bccfa7bfa3111ced5f"
   integrity sha512-gR6Rw4MvUlYy83vP0vxoVNzM6t8MUXqNuRsuBmBHQDu1Fh6X015FrLdgoDKcNdkwGubozq0P4N0Q37UyFVr1EA==

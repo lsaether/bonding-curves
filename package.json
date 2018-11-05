@@ -38,6 +38,7 @@
     "@types/web3": "1.0.11",
     "bn.js": "4.11.8",
     "chai": "4.2.0",
+    "ganache-cli": "^6.1.8",
     "truffle-typings": "1.0.3",
     "ts-node": "7.0.1",
     "typechain": "0.3.6",

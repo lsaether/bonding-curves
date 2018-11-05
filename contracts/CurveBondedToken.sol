@@ -13,6 +13,7 @@ import "./MaxGasPrice.sol";
 contract CurveBondedToken is IBondingCurve, BancorFormula, Ownable, MaxGasPrice, ERC20 {
     using SafeMath for uint256;
 
+    // Use the same decimal places as ether.
     uint256 public scale = 10**18;
     uint256 public poolBalance = 10*scale;
     uint256 public reserveRatio;
