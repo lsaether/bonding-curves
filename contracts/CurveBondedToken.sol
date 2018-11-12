@@ -15,7 +15,7 @@ contract CurveBondedToken is IBondingCurve, BancorFormula, Ownable, MaxGasPrice,
 
     // Use the same decimal places as ether.
     uint256 public scale = 10**18;
-    uint256 public poolBalance = 10*scale;
+    uint256 public poolBalance = 1*scale;
     uint256 public reserveRatio;
 
     constructor(

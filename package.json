@@ -7,6 +7,7 @@
     "test": "test"
   },
   "scripts": {
+    "compile:dapp": "yarn generate && cp build dapp/src -r",
     "dep": "node scripts/enforceStaticDeps.js",
     "ganache": "ganache-cli -p 8577",
     "generate": "truffle compile && typechain --target truffle './build/**/*.json' && node scripts/patchTypechain.js",
